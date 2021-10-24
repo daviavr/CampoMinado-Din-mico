@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../styles/tabuleiro-jogo.css">
+    <script src="../scripts/criacao_tabuleiro.js"></script>
+    <script src="../scripts/logica_jogo.js"></script>
+</head>
+<body>
+    <div id="entrada">
+        <button onclick="cria_tabuleiro(10,10)" class="campo">Criar 10x10</button>
+        <button onclick="mostra_bombas(false)" class="campo">Trapaca</button>
+
+        <form name="tabuleiro" action="" onsubmit="return define_tamanho()" id="campos">
+            <div> Linha <input type="number" name="linha" class="campo"></div>
+            <div> Coluna <input type="number" name="coluna" class="campo"></div>
+            
+            <input type="submit" value="Criar Personalizado" class="campo">
+            
+        </form>
+
+        <button onclick="limpa_tabuleiro()" >Limpar</button>
+        
+    </div>
+
+    <div id="jogo"></div>
+</body>
+</html>

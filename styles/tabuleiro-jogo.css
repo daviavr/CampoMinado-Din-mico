@@ -1,0 +1,57 @@
+body #jogo .linha {
+    display: flex;
+}
+
+body #jogo .linha .quadrado {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body #jogo .linha .quadrado.aberto{
+    border: 1px solid black;
+
+    width: 45px;
+    height: 45px;
+    margin: 2.5px;
+}
+
+body #jogo .linha .quadrado .bomba {
+    width: 25px;
+    height: 25px;
+}
+
+body #jogo .linha .quadrado.roxo.aberto {
+    background: #9e42ff;
+
+}
+
+body #jogo .linha .quadrado.azul.aberto {
+    background: #81c2ff;
+
+}
+
+body #jogo .linha .quadrado.roxo {
+    background: #541597;
+}
+
+body #jogo .linha .quadrado.azul {
+    background: #106cc2;
+}
+
+body #entrada {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+body #entrada #campos {
+    display: flex;
+}
+
+body #entrada #campos .campo {
+    margin-right: 10px;
+}
