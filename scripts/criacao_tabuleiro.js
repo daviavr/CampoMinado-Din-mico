@@ -97,9 +97,6 @@ function define_bombas(){
 
 function limpa_tabuleiro() {
     let acha_linha = document.getElementsByClassName("linha");
-    // let acha_quadrado = document.getElementsByClassName("quadrado");
-    
-    // let size_quadrados = acha_quadrado.length;
     let size_linhas = acha_linha.length;
     
     for(let i = 0; i < size_linhas; i++)
@@ -108,4 +105,5 @@ function limpa_tabuleiro() {
     }
 
     posicoes_bombas = [];
+    ganhou_ou_perdeu = false;
 }

@@ -1,3 +1,6 @@
+let ganhou_ou_perdeu = false
+let clicado = false
+
 function get_quadrado(linha, coluna) {
     posicao = (linha *= tam_colunas) + coluna;
     let quadrado = document.getElementsByClassName("quadrado")[posicao];
@@ -8,9 +11,9 @@ function get_posicao_absoluta(linha, coluna) {
     return ((linha * tam_colunas) + coluna);
 }
 
-function check_child_with_type(parent,type) {
+function has_child_with_type(parent,type) {
     let childs = parent.childNodes
-    console.log(childs.length)
+    // console.log(childs.length)
 
     for(let i = 0; i < childs.length; i++){
         if(childs[i].nodeType == type){
@@ -43,31 +46,37 @@ function mostra_conteudo_quadrado(linha,coluna){
     }
 }
 
-async function mostra_bombas(perdeu) {
+function mostra_bombas() {
     let quadrados = document.getElementsByClassName("quadrado");
+    // console.log(quadrados[posicoes_bombas[0]].childNodes[0].nodeType)
 
-    if(!quadrados[posicoes_bombas[0]].hasChildNodes()){
+    if(!clicado){
+        clicado = true
         for (let i = 0; i < num_bombas; i++) {
             let pos = posicoes_bombas[i];
-            let imagem = document.createElement("img");
-            imagem.classList.add("bomba");
-            imagem.setAttribute("src", "../img/bomba.png");
-            quadrados[pos].appendChild(imagem);
+            let has_child = has_child_with_type(quadrados[pos],1)[0]
+            if(!has_child) {
+                let imagem = document.createElement("img");
+                imagem.classList.add("bomba");
+                imagem.setAttribute("src", "../img/bomba.png");
+                quadrados[pos].appendChild(imagem);
+            }
             // console.log(quadrados[pos]);
         }
+        esconde_bombas();
     }
-
-    // if(!perdeu)
-    //     await sleep(10000);
-    //     esconde_bombas();
 }
 
+async function esconde_bombas() {
+    console.log(clicado)
+    await sleep(10000);
+    clicado = false
+    if(!ganhou_ou_perdeu){
+        let bombas = document.getElementsByClassName("bomba");
 
-function esconde_bombas() {
-    let bombas = document.getElementsByClassName("bomba");
-
-    for (let i = 0; i < num_bombas; i++) {
-        bombas[0].remove();
+        for (let i = 0; i < num_bombas; i++) {
+            bombas[0].remove();
+        }
     }
 }
 
@@ -102,7 +111,7 @@ function get_coordenadas(linha_central,coluna_central) {
 }
 
 function qtde_bombas_ao_redor(coordenadas){
-    let ha_bomba, bombas_ao_redor = 0
+    let ha_bomba, bombas_ao_redor = 0;
 
     let { linha_inicial, coluna_inicial, linha_final, 
         coluna_final, linha_central, coluna_central } = coordenadas;
@@ -161,12 +170,16 @@ async function pressiona_quadrado(linha, coluna) {
 
 
     if (ha_bomba) {
-        await mostra_bombas(true);
+        ganhou_ou_perdeu = true
+        mostra_bombas();
         alert("Você perdeu!");
+        perdeu = true
         // let jogo = 
         // new Historico(nome_jogador, `${tam_linhas}, ${tam_colunas}`, num_bombas, modalidade, tempo, "Derrota", new Date);
     }
     else {
+        ganhou_ou_perdeu = true
+        mostra_bombas();
         mostra_conteudo_quadrado(linha, coluna);
         await abre_posicoes(coordenadas);
         if(jogador_venceu())
@@ -182,7 +195,7 @@ function botao_direito(linha,coluna){
 
     
     if(!quadrado.classList.contains("aberto")) {
-        let nodes_quadrado = check_child_with_type(quadrado, 3)
+        let nodes_quadrado = has_child_with_type(quadrado, 3)
         if (nodes_quadrado[0] == true) {
             nodes_quadrado[1].remove()
         }
