@@ -68,7 +68,7 @@ function mostra_bombas() {
 }
 
 async function esconde_bombas() {
-    console.log(clicado)
+    // console.log(clicado)
     await sleep(10000);
     clicado = false
     if(!ganhou_ou_perdeu){
@@ -223,7 +223,7 @@ function jogador_venceu(){
 }
 
 function bloqueia_tabuleiro() {
-    
+
 }
 
 
