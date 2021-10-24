@@ -106,4 +106,5 @@ function limpa_tabuleiro() {
 
     posicoes_bombas = [];
     ganhou_ou_perdeu = false;
+    clicado = false
 }

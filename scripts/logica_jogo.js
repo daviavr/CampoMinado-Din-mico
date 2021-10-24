@@ -178,13 +178,13 @@ async function pressiona_quadrado(linha, coluna) {
         // new Historico(nome_jogador, `${tam_linhas}, ${tam_colunas}`, num_bombas, modalidade, tempo, "Derrota", new Date);
     }
     else {
-        ganhou_ou_perdeu = true
-        mostra_bombas();
         mostra_conteudo_quadrado(linha, coluna);
         await abre_posicoes(coordenadas);
         if(jogador_venceu())
         {
             alert("Você Ganhou!");
+            ganhou_ou_perdeu = true
+            mostra_bombas();
         }
     }
 }
@@ -222,24 +222,9 @@ function jogador_venceu(){
 
 }
 
-// function limpa_tabuleiro() {
-//     let acha_linha = document.getElementsByClassName("linha");
-//     let acha_quadrado = document.getElementsByClassName("quadrado");
-    
-//     let size_quadrados = acha_quadrado.length;
-//     let size_linhas = acha_linha.length;
-    
-//     for(let i = 0; i < size_quadrados; i++ ){
-//         acha_quadrado[0].remove();
-//     }
+function bloqueia_tabuleiro() {
 
-//     for(let i = 0; i < size_linhas; i++)
-//     {
-//         acha_linha[0].remove();
-//     }
-
-//     posicoes_bombas = [];
-// }
+}
 
 
 // class Historico{
