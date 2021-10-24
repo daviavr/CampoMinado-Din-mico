@@ -223,7 +223,7 @@ function jogador_venceu(){
 }
 
 function bloqueia_tabuleiro() {
-
+    
 }
 
 
