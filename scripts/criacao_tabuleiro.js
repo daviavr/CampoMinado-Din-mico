@@ -1,6 +1,6 @@
 let tam_linhas, tam_colunas;
 let posicoes_bombas = [];
-let num_bombas = 15; //NUMERO ARBITRARIO PARA TESTE
+let num_bombas = 20; //NUMERO ARBITRARIO PARA TESTE
 // let nome_jogador = "Joaquim" //NOME ARBITRARIO PARA TESTE
 // let modalidade = "Classico" // ARBITRARIA PARA TESTE
 
